@@ -2,26 +2,32 @@
  * Create a list that holds all of your cards
  */
 
-// Select all needed HTML elements
-const ulDeck = document.querySelector('.deck');
-const restartButton = document.querySelector('.restart');
-const movesSpan = document.querySelector('.moves');
+// Select elements in .score-panel
 const starsUl = document.querySelector('.stars');
+const movesSpan = document.querySelector('.moves');
 const secondSpan = document.querySelector('#seconds');
 const minuteSpan = document.querySelector('#minutes');
-const hour = document.querySelector('#hours');
+const restartButton = document.querySelector('.restart');
 
+// Select the deck
+const ulDeck = document.querySelector('.deck');
+
+// Select elements in .overlay
 const congratsMessage = document.querySelector('.congrats');
 const timePlayed = document.querySelector('.timePlayed');
-const finalRating = document.querySelector('.scores');
 const finalMoves = document.querySelector('.finalMoves');
+const finalRating = document.querySelector('.scores');
 const playAgain = document.querySelector('.playAgain');
 
+
+// Select audio elements
 const audioR = document.querySelector('audio[data-key="82"]');
 const audioClick = document.querySelector('audio.click');
 
+// Create cards array
 let cardsName = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube', 'fa fa-anchor', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-diamond', 'fa fa-bomb', 'fa fa-leaf', 'fa fa-bomb', 'fa fa-bolt', 'fa fa-bicycle', 'fa fa-paper-plane-o', 'fa fa-cube'];
 
+// Trying new icons from FontAwesome
 cardsName = ['fab fa-angular', 'fab fa-vuejs', 'fab fa-react', 'fab fa-css3-alt', 'fab fa-html5', 'fas fa-code', 'fab fa-slack', 'fab fa-js-square', 'fab fa-angular', 'fab fa-vuejs', 'fab fa-react', 'fab fa-css3-alt', 'fab fa-html5', 'fas fa-code', 'fab fa-slack', 'fab fa-js-square'];
 let cardsStack = [];
 
@@ -117,6 +123,8 @@ function compareCards(card) {
 
 function updateMoves() {
     movesCounter++;
+
+    // Update new move every increment
     movesSpan.innerHTML = movesCounter;
     starRating();
 }
@@ -145,9 +153,7 @@ function timer() {
     if (timesClick === 1) {
         let seconds = 0;
         let minutes = 0;
-        let hours = 0;
 
-        hour.textContent = '00';
         minuteSpan.textContent = '00';
         secondSpan.textContent = '00';
 
@@ -156,16 +162,15 @@ function timer() {
             if (seconds === 60) {
                 seconds = 0;
                 minutes++;
+                
+                // Reformat the minute
                 if (minutes < 10) {
                     minutes = `0${minutes}`;
                 }
-                if (minutes === 60) {
-                    minutes = 0;
-                    hours++;
-                    hour.textContent = hours;
-                }
                 minuteSpan.textContent = minutes;
             }
+
+            // Reformat the second
             if (seconds < 10) {
                 seconds = `0${seconds}`;
             }
@@ -194,9 +199,12 @@ function playAgainButton() {
 
 function hotKeyR() {
     window.addEventListener('keydown', e => {
+        // Ignore the rest of the code if R not pressed
         if (e.keyCode !== 82) {
             return;
         }
+
+        // Reset play time and play the sound
         audioR.currentTime = 0;
         audioR.play();
 
@@ -205,7 +213,7 @@ function hotKeyR() {
 }
 
 function displayWinning() {
-    if (matched === 8) {
+    if (matched === 2) {
         // Stop timing to get seconds and minutes data
         stopTimer();
 
@@ -265,7 +273,6 @@ function initialLoading() {
             return;
         }
 
-        
         const card = e.target;
         
         displayCards(card);
