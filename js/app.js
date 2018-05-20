@@ -22,7 +22,10 @@ const playAgain = document.querySelector('.playAgain');
 
 // Select audio elements
 const audioR = document.querySelector('audio[data-key="82"]');
-const audioClick = document.querySelector('audio.click');
+const audioFlip = document.querySelector('audio.flipSound');
+const audioMatched = document.querySelector('audio.matchedSound');
+const audioUnmatched = document.querySelector('audio.unmatchedSound');
+const audioWinning = document.querySelector('audio.winning');
 
 // Create cards array
 let cardsName = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube', 'fa fa-anchor', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-diamond', 'fa fa-bomb', 'fa fa-leaf', 'fa fa-bomb', 'fa fa-bolt', 'fa fa-bicycle', 'fa fa-paper-plane-o', 'fa fa-cube'];
@@ -92,6 +95,10 @@ function compareCards(card) {
     // Put new card to card stack if stack is empty
     if (cardsStack.length === 0) {
         cardsStack.push(card);
+
+        // Reset and play flipping sound
+        audioFlip.currentTime = 0;
+        audioFlip.play();
     }
 
     // Check cards'if to ignore pushing one same card twice
@@ -111,6 +118,10 @@ function compareCards(card) {
             matched++;
             displayWinning();
 
+            // Reset and play matched sound
+            audioMatched.currentTime = 0;
+            audioMatched.play();
+
             // Reset cards stack for the next use
             cardsStack = [];
         } else {
@@ -118,6 +129,10 @@ function compareCards(card) {
             cardsStack.forEach(openCard => {
                 openCard.classList.add('wrong');
             });
+
+            // Reset and play unmatched sound
+            audioUnmatched.currentTime = 0;
+            audioUnmatched.play();
 
             // Wait for 500ms, show wrong animation and hide cards
             setTimeout(() => {
@@ -222,7 +237,7 @@ function hotKeyR() {
 }
 
 function displayWinning() {
-    if (matched === 8) {
+    if (matched === 1) {
         // Stop timing to get seconds and minutes data
         stopTimer();
 
@@ -255,7 +270,10 @@ function displayWinning() {
         } else {
             minuteValue = `${minuteValue} minutes and`;
         }
-    
+
+        // Play congratulation sound
+        audioWinning.play();
+
         // Winning message
         congratsMessage.textContent = `Congratulation! You have won the game!`
         timePlayed.textContent = `Time played: ${minuteValue} ${secondValue}`;
