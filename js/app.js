@@ -59,13 +59,14 @@ function shuffle(array) {
 
 function renderShuffledCards(cardsArray) {
     let cardHTML = '';
-
+    let counter = 1;
     // Shuffle to get new array of cards
     cardsArray = shuffle(cardsArray);
 
     // Accumulate new cards to cardHTML
     cardsArray.forEach(card => {
-        cardHTML += `<li class="card"><i class="${card}"></i></li>`;
+        cardHTML += `<li id="card${counter}" class="card"><i class="${card}"></i></li>`;
+        counter++;
     });
 
     // Render new cards to 'ul'
@@ -88,8 +89,17 @@ function displayCards(card) {
 }
 
 function compareCards(card) {
-    // Put new card to card stack
-    cardsStack.push(card);
+    // Put new card to card stack if stack is empty
+    if (cardsStack.length === 0) {
+        cardsStack.push(card);
+    }
+
+    // Check cards'if to ignore pushing one same card twice
+    if (cardsStack[0]) {
+        if (cardsStack[0].id !== card.id) {
+            cardsStack.push(card);
+        }
+    }
 
     //Compare if matched
     if (cardsStack.length === 2) {
@@ -104,7 +114,6 @@ function compareCards(card) {
             // Reset cards stack for the next use
             cardsStack = [];
         } else {
-
             // Add 'wrong' class to each card
             cardsStack.forEach(openCard => {
                 openCard.classList.add('wrong');
