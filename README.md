@@ -1,21 +1,19 @@
 # Memory Game Project
 
-## Table of Contents
-
-* [Instructions](#instructions)
-* [Contributing](#contributing)
-
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+I have added a shortcut to restart the game. You can simply press 'R' to restart the game.
 
-To get started, open `js/app.js` and start building out the app's functionality
+## Note
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+One significant bug right now is if a card is sequentially clicked twice, it will become a match with itself. It is a logical bug due to my first approach and attempt on this project. However, I have not fixed it earlier in the process. The project is not big that it bothers me to think about this.
 
-## Contributing
+If you have any idea on this. Please give me some suggestion.
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+Otherwise, all basic functionalities of the game work well.
 
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+If you find any issue, please do whatever you can to let me know. I'm new and still getting used to with Git and Github.
+
+Thank you!
+
 # MemoryGame
