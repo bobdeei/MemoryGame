@@ -237,7 +237,7 @@ function hotKeyR() {
 }
 
 function displayWinning() {
-    if (matched === 1) {
+    if (matched === 8) {
         // Stop timing to get seconds and minutes data
         stopTimer();
 
