@@ -6,13 +6,18 @@ I have added a shortcut to restart the game. You can simply press 'R' to restart
 
 ## Note
 
-One significant bug right now is if a card is sequentially clicked twice, it will become a match with itself. It is a logical bug due to my first approach and attempt on this project. However, I have not fixed it earlier in the process. The project is not big that it bothers me to think about this.
+May 19th 2018
+    Bug: Self-matching if clicked twice on the same card.
 
-If you have any idea on this. Please give me some suggestion.
+May 20th 2018
 
-Otherwise, all basic functionalities of the game work well.
+    The self-matching bug is just fixed. Clicking the same card twice now won't increment the move counter as well as cause self-matching behavior.
 
-If you find any issue, please do whatever you can to let me know. I'm new and still getting used to with Git and Github.
+    One fun thing I just add is the sound effect for fliped, matched, or unmatched cards. There is a congratulation sound if all cards are successfully matched. This is interesting beacuse the sound tend to go with the matched animation. You'll see this if you win the game. I'll try to better sync the animation and the sound effect so they look like they go together.
+
+    The next issue to solve would be responsiveness.
+
+If you find any further issue, please do whatever you can to let me know. I'm new to programming and still getting used to with Git and Github.
 
 Thank you!
 
