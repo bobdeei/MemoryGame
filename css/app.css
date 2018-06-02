@@ -72,13 +72,13 @@ h1 {
 }
 
 .deck .card.show {
-    font-size: 33px;
+    font-size: 2.5em;
 }
 
 .deck .card.match {
     cursor: default;
     background: #02ccba;
-    font-size: 33px;
+    font-size: 2.5em;
 
     animation: match .8s;
 }
@@ -131,8 +131,10 @@ h1 {
 
 .score-panel {
     text-align: left;
-    width: 345px;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
 }
 
 .score-panel .stars {
@@ -172,11 +174,6 @@ h1 {
 .timing {
     min-width: 70px;
 }
-section {
-    min-width: 500px;
-    display: flex;
-    justify-content: space-between;
-}
 .stars {
     min-width: 130px;
 }
@@ -195,4 +192,42 @@ section {
 
 h1, h4 {
     text-align: center;
+}
+
+@media only screen and (max-width: 360px) {
+    .deck {
+        width: 300px;
+        padding: 15px;
+        min-height: 340px;
+    }
+    .deck .card {
+        width: 60px;
+        height: 60px;
+    }
+    .deck .card.show,
+    .deck .card.match {
+        font-size: 24px;
+    }
+    .score-panel {
+        width: 300px;
+    }
+}
+
+@media only screen and (min-width: 361px) and (max-width: 720px) {
+    .deck {
+        width: 380px;
+        padding: 20px;
+        min-height: 400px;
+    }
+    .deck .card {
+        width: 70px;
+        height: 70px;
+    }
+    .deck .card.show,
+    .deck .card.match {
+        font-size: 26px;
+    }
+    .score-panel {
+        width: 390px;
+    }
 }

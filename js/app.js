@@ -13,6 +13,7 @@ const restartButton = document.querySelector('.restart');
 const ulDeck = document.querySelector('.deck');
 
 // Select elements in .overlay
+const overlay = document.querySelector('.overlay');
 const congratsMessage = document.querySelector('.congrats');
 const timePlayed = document.querySelector('.timePlayed');
 const finalMoves = document.querySelector('.finalMoves');
@@ -281,7 +282,10 @@ function displayWinning() {
         finalRating.innerHTML = `Your Final Score: ${finalScores}`;
 
         // Display the popup
-        setTimeout(() => document.querySelector('.overlay').style.height = '100%', 1000);
+        setTimeout(() => {
+            overlay.style.padding = '1em';
+            overlay.style.height = '100%';
+        }, 1000);
     }
     return;
 }
